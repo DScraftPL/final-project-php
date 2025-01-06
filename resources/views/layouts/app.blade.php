@@ -17,10 +17,10 @@
                 <a href="{{ route('register') }}" class="text-white hover:underline">Register</a>
             @else
                 <span class="mr-4">Hello, {{ Auth::user()->name }}!</span>
-                <form action="{{ route('dashboard') }}" class="inline">
-                    @csrf
-                    <button type="submit" class="text-white hover:underline">Dashboard</button>
-                </form>
+                    <a href="/dashboard" class="text-white hover:underline">Dashboard</a>
+                @if(auth()->user()->is_admin)
+                    <a href="/admin" class="text-red-600 hover:underline m-4">Admin</a>
+                @endif
             @endguest
         </div>
         <div>

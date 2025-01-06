@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\ForumReplyController;
 use App\Models\User;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [ForumPostController::class, 'home'])->name('forum_posts.index');
 
@@ -16,7 +17,7 @@ Route::get('/about', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/user/{userName}', function($userName) {
     $user = User::where('name', 'LIKE', "%$userName%") -> first();
@@ -37,6 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/forum', [ForumPostController::class, 'store'])->name('forum.store');
     Route::post('/replies', [ForumReplyController::class, 'store'])->name('replies.store');
     Route::get('/forum/{id}', [ForumPostController::class, 'show'])->name('forum.show');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 require __DIR__.'/auth.php';
