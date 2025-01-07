@@ -11,10 +11,14 @@ class AnnouncementController extends Controller
     {
         return Announcement::latest()->take(3)->get();
     }
-    public function create() {
+
+    public function create()
+    {
         return view('announcement.create');
     }
-    public function store(Request $request) {
+
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -26,7 +30,9 @@ class AnnouncementController extends Controller
         ]);
         return redirect()->route('announcement.index');
     }
-    public function index(){
+
+    public function index()
+    {
         $announcements = Announcement::latest()->paginate(5);
         return view('announcement.index', compact('announcements'));
     }
@@ -53,6 +59,7 @@ class AnnouncementController extends Controller
 
         return redirect()->route('announcement.index')->with('success', 'Announcement updated successfully.');
     }
+
     public function destroy($id)
     {
         $announcement = Announcement::findOrFail($id);

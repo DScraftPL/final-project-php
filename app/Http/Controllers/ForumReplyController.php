@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ForumReply;
+use Illuminate\Http\Request;
 
 class ForumReplyController extends Controller
 {

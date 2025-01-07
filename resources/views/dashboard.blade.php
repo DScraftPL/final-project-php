@@ -29,7 +29,8 @@
                         @csrf
                         @method('put')
                         <div>
-                            <label for="current_password" class="block text-sm font-medium text-gray-700">Current Password</label>
+                            <label for="current_password" class="block text-sm font-medium text-gray-700">Current
+                                Password</label>
                             <input type="password" name="current_password" id="current_password" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
@@ -39,7 +40,8 @@
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
                         <div>
-                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm
+                                New Password</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
@@ -80,7 +82,8 @@
                     @foreach(Auth::user()->posts as $post)
                         <div class="border-b pb-4">
                             <h3 class="text-lg font-medium">
-                                <a href="{{ route('forum.show', $post->id) }}" class="text-blue-600 hover:text-blue-800">
+                                <a href="{{ route('forum.show', $post->id) }}"
+                                   class="text-blue-600 hover:text-blue-800">
                                     {{ $post->title }}
                                 </a>
                             </h3>

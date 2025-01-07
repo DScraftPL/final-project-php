@@ -1,14 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\ForumReplyController;
+use App\Http\Controllers\ProfileController;
 use App\Models\User;
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ForumPostController::class, 'home'])->name('forum_posts.index');
 
@@ -20,8 +19,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/user/{userName}', function($userName) {
-    $user = User::where('name', 'LIKE', "%$userName%") -> first();
+Route::get('/user/{userName}', function ($userName) {
+    $user = User::where('name', 'LIKE', "%$userName%")->first();
     return view('user', ['user' => $user]);
 });
 
@@ -54,4 +53,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/reply/{replyId}', [ForumReplyController::class, 'destroy'])->name('reply.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

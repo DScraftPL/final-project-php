@@ -7,7 +7,7 @@
             @csrf
             <div class="form-group">
                 <label for="title">Post Text</label>
-                <input id="title" name="title"  type="text" class="form-control" required />
+                <input id="title" name="title" type="text" class="form-control" required/>
             </div>
             <div class="form-group">
                 <label for="description">Post Text</label>

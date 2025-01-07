@@ -3,9 +3,9 @@
 @section('content')
     @if ($user)
         <h1>User Details:</h1>
-{{--        <p><strong>ID:</strong> {{ $user->id }}</p>--}}
+        {{--        <p><strong>ID:</strong> {{ $user->id }}</p>--}}
         <p><strong>Name:</strong> {{ $user->name }}</p>
-{{--        <p><strong>Email:</strong> {{ $user->email }}</p>--}}
+        {{--        <p><strong>Email:</strong> {{ $user->email }}</p>--}}
         <p><strong>Created At:</strong> {{ $user->created_at }}</p>
         <p><strong>Number of Posts:</strong> {{ $user->posts()->count() }}</p>
         <p><strong>Number of Replies:</strong> {{ $user->replies()->count() }}</p>

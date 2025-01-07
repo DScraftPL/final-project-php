@@ -2,15 +2,12 @@
 
 @section('content')
     <div class="space-y-8">
-        <!-- Header Section -->
         <div class="flex justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold">Admin Dashboard</h1>
                 <p class="text-gray-600">Welcome, {{ auth()->user()->name }}!</p>
             </div>
         </div>
-
-        <!-- Forum Statistics Card -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-blue-50 p-6 rounded-lg shadow">
                 <h3 class="text-lg font-semibold mb-2">Total Users</h3>
@@ -31,12 +28,24 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posts</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Replies</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Joined</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Name
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Email
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Posts
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Replies
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Joined
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Actions
+                        </th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -53,7 +62,8 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $user->replies->count() }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->format('M d, Y') }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="/user/{{ $user->name }}" class="text-blue-600 hover:text-blue-900">View Profile</a>
+                                <a href="/user/{{ $user->name }}" class="text-blue-600 hover:text-blue-900">View
+                                    Profile</a>
                             </td>
                         </tr>
                     @endforeach
@@ -64,7 +74,8 @@
         <div class="bg-white p-6 rounded-lg shadow">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-xl font-semibold">Your Announcements</h2>
-                <a href="{{ route('announcement.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                <a href="{{ route('announcement.create') }}"
+                   class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                     Create New Announcement
                 </a>
             </div>
@@ -75,7 +86,8 @@
                             <div class="flex justify-between items-start">
                                 <div>
                                     <h3 class="text-lg font-medium">{{ $announcement->title }}</h3>
-                                    <p class="text-gray-600 text-sm">Posted on: {{ $announcement->created_at->format('M d, Y') }}</p>
+                                    <p class="text-gray-600 text-sm">Posted
+                                        on: {{ $announcement->created_at->format('M d, Y') }}</p>
                                     <p class="text-gray-800 mt-2">{{ Str::limit($announcement->content, 150) }}</p>
                                 </div>
                                 <div class="flex space-x-2">
@@ -87,7 +99,8 @@
                                           onsubmit="return confirm('Are you sure you want to delete this announcement?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                                        <button type="submit"
+                                                class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
                                             Delete
                                         </button>
                                     </form>

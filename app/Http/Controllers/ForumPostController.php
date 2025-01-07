@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ForumPost;
+use Illuminate\Http\Request;
 
 class ForumPostController extends Controller
 {
@@ -51,7 +51,6 @@ class ForumPostController extends Controller
         $post = ForumPost::with('replies')->findOrFail($postId);
         $post->replies()->delete();
         $post->delete();
-
         return redirect()->route('forum.index')->with('success', 'Post and all associated replies deleted successfully.');
     }
 }
