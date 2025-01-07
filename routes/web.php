@@ -50,6 +50,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/announcement/{id}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
     Route::put('/announcement/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
     Route::delete('/announcement/{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+    Route::delete('/forum/{postId}', [ForumPostController::class, 'destroy'])->name('forum.destroy');
+    Route::delete('/reply/{replyId}', [ForumReplyController::class, 'destroy'])->name('reply.destroy');
 });
 
 require __DIR__.'/auth.php';

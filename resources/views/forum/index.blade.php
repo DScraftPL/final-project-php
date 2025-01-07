@@ -16,6 +16,15 @@
                                 href="/forum/{{$post->id}}"
                                 class="hover:font-bold"
                             >replies</a></p>
+                        @if(auth()->check() && auth()->user()->is_admin)
+                            <form action="{{ route('forum.destroy', ['postId' => $post->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                                    Delete Post
+                                </button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @endforeach

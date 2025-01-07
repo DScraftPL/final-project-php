@@ -45,4 +45,13 @@ class ForumPostController extends Controller
         $posts = ForumPost::limit($numberOfPosts)->latest()->get();
         return view('home', compact('posts'));
     }
+
+    public function destroy($postId)
+    {
+        $post = ForumPost::with('replies')->findOrFail($postId);
+        $post->replies()->delete();
+        $post->delete();
+
+        return redirect()->route('forum.index')->with('success', 'Post and all associated replies deleted successfully.');
+    }
 }

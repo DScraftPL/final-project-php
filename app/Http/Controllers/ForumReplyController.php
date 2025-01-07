@@ -28,4 +28,12 @@ class ForumReplyController extends Controller
         $post = ForumPost::with('replies')->findOrFail($id);
         return view('forum.show', compact('post'));
     }
+
+    public function destroy($replyId)
+    {
+        $reply = ForumReply::findOrFail($replyId);
+        $reply->delete();
+
+        return back()->with('success', 'Reply deleted successfully.');
+    }
 }

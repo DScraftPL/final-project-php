@@ -15,6 +15,15 @@
             <div>
                 <p>{{ $reply->content }}</p>
                 <small>Replied by: {{ $reply->author->name }}</small>
+                @if(auth()->check() && auth()->user()->is_admin)
+                    <form action="{{ route('reply.destroy', ['replyId' => $reply->id]) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                            Delete Post
+                        </button>
+                    </form>
+                @endif
             </div>
         @endforeach
         <form method="GET" action="{{ route('forum.show', $post->id) }}">
