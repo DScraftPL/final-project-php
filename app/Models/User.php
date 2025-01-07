@@ -54,4 +54,8 @@ class User extends Authenticatable
     public function replies() {
         return $this->hasMany(ForumReply::class, 'author_id');
     }
+
+    public function announcements() {
+        return $this->hasMany(Announcement::class, 'author_id');
+    }
 }

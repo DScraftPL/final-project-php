@@ -19,6 +19,17 @@
                     </div>
                 </div>
             @endforeach
+                <form method="GET" action="{{ route('forum.index', $post->id) }}">
+                    <label for="number_of_posts">Number of replies:</label>
+                    <select name="number_of_posts" id="number_of_posts" onchange="this.form.submit()">
+                        <option value="3" {{ $numberOfPosts == 3 ? 'selected' : '' }}>3</option>
+                        <option value="5" {{ $numberOfPosts == 5 ? 'selected' : '' }}>5</option>
+                        <option value="10" {{ $numberOfPosts == 10 ? 'selected' : '' }}>10</option>
+                    </select>
+                </form>
+                <div class="pagination">
+                    {!! $posts->appends(['number_of_posts' => $numberOfPosts])->links() !!}
+                </div>
         </div>
     </div>
 @endsection

@@ -43,14 +43,27 @@
                     <a href="/forum/create"><h1>Create Post</h1></a>
                 </div>
             @endguest
-            <div class="border p-4 rounded-lg shadow-lg">
-                <h1>Announcements</h1>
-                <ul>
-                    <li>witam</li>
-                    <li>tu wiacker</li>
-                    <li>heheheheheh</li>
-                </ul>
-            </div>
+                <div class="border p-4 rounded-lg shadow-lg">
+                    <h1>Announcements</h1>
+                    <ul>
+                        @php
+                            $recentAnnouncements = (new \App\Http\Controllers\AnnouncementController)->getRecentAnnouncements();
+                        @endphp
+                        @foreach($recentAnnouncements as $announcement)
+                            <li class="mb-2">
+                                <h3 class="font-semibold">{{ $announcement->title }}</h3>
+                            </li>
+                        @endforeach
+                        @if($recentAnnouncements->isEmpty())
+                            <li>No announcements yet</li>
+                        @endif
+                        @if(auth()->check() && auth()->user()->is_admin)
+                            <div class="mt-4">
+                                <a href="{{ route('announcement.create') }}" class="text-blue-600 hover:underline">Create Announcement</a>
+                            </div>
+                        @endif
+                    </ul>
+                </div>
         </div>
     </div>
 </main>

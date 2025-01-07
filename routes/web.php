@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::get('/user/{userName}', function($userName) {
     return view('user', ['user' => $user]);
 });
 
+Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+
 Route::get('/comments', [CommentController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
@@ -42,6 +45,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/announcement/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+    Route::post('/announcement', [AnnouncementController::class, 'store'])->name('announcement.store');
+    Route::get('/announcement/{id}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+    Route::put('/announcement/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
+    Route::delete('/announcement/{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
 });
 
 require __DIR__.'/auth.php';
