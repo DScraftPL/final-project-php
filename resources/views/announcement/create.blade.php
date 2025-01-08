@@ -1,19 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Create a Announcement</h2>
-        <form action="{{ route('announcement.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="title">Post Text</label>
-                <input id="title" name="title" type="text" class="form-control" required/>
-            </div>
-            <div class="form-group">
-                <label for="description">Post Text</label>
-                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Post</button>
-        </form>
+    <div class="max-w-2xl mx-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Create Announcement</h1>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <form action="{{ route('announcement.store') }}" method="POST">
+                @csrf
+
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                    <input type="text" name="title" id="title"
+                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                           value="{{ old('title') }}" required>
+                    @error('title')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea name="description" id="description" rows="4"
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                              required>{{ old('description') }}</textarea>
+                    @error('description')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="flex justify-end space-x-4">
+                    <a href="{{ route('announcement.index') }}"
+                       class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-50">
+                        Cancel
+                    </a>
+                    <button type="submit"
+                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                        Create Announcement
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 @endsection

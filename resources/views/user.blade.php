@@ -2,27 +2,72 @@
 
 @section('content')
     @if ($user)
-        <h1>User Details:</h1>
-        {{--        <p><strong>ID:</strong> {{ $user->id }}</p>--}}
-        <p><strong>Name:</strong> {{ $user->name }}</p>
-        {{--        <p><strong>Email:</strong> {{ $user->email }}</p>--}}
-        <p><strong>Created At:</strong> {{ $user->created_at }}</p>
-        <p><strong>Number of Posts:</strong> {{ $user->posts()->count() }}</p>
-        <p><strong>Number of Replies:</strong> {{ $user->replies()->count() }}</p>
-        <h1>User Posts:</h1>
-        @foreach($user->posts as $post)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <a href="/user/{{$post->author->name}}"><p>{{ $post->author->name }}</p></a>
-                    <p>{{ $post->content }}</p>
-                    <p><small>Posted on: {{ $post->created_at->format('Y-m-d H:i') }}</small> <a
-                            href="/forum/{{$post->id}}"
-                            class="hover:font-bold"
-                        >replies</a></p>
+        <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h1 class="text-2xl font-bold mb-4">User Profile</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-3">
+                        <div>
+                            <span class="text-gray-600">Username:</span>
+                            <span class="font-medium ml-2">{{ $user->name }}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Member since:</span>
+                            <span class="font-medium ml-2">{{ $user->created_at->format('M d, Y') }}</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="text-gray-600">Total Posts:</span>
+                            <span class="font-medium ml-2">{{ $user->posts()->count() }}</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Total Replies:</span>
+                            <span class="font-medium ml-2">{{ $user->replies()->count() }}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        @endforeach
+
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">User Posts</h2>
+                @if($user->posts->count() > 0)
+                    <div class="space-y-4">
+                        @foreach($user->posts as $post)
+                            <div class="border-b last:border-0 pb-4">
+                                <div class="flex justify-between items-start">
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2">
+                                            <a href="/user/{{$post->author->name}}" class="text-blue-600 hover:text-blue-800 font-medium">
+                                                {{ $post->author->name }}
+                                            </a>
+                                            <span class="text-gray-500 text-sm">
+                                                {{ $post->created_at->format('M d, Y H:i') }}
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-800">{{ $post->content }}</p>
+                                        <div>
+                                            <a href="/forum/{{$post->id}}"
+                                               class="text-blue-600 hover:text-blue-800 text-sm">
+                                                View Discussion →
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <p class="text-gray-600">No posts yet.</p>
+                @endif
+            </div>
+        </div>
     @else
-        <p>User not found.</p>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <div class="text-center py-8">
+                <h2 class="text-xl font-semibold text-gray-800">User not found</h2>
+                <p class="text-gray-600 mt-2">The requested user profile could not be found.</p>
+            </div>
+        </div>
     @endif
 @endsection

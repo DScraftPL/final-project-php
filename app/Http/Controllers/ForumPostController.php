@@ -51,6 +51,25 @@ class ForumPostController extends Controller
         $post = ForumPost::with('replies')->findOrFail($postId);
         $post->replies()->delete();
         $post->delete();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return redirect()->route('forum.index')->with('success', 'Post and all associated replies deleted successfully.');
     }
 }
