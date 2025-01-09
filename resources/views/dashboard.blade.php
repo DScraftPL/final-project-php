@@ -20,17 +20,52 @@
                     <p>Email: {{ Auth::user()->email }}</p>
                     <p>Total Posts: {{ Auth::user()->posts->count() }}</p>
                     <p>Total Replies: {{ Auth::user()->replies->count() }}</p>
+                    <form action="{{ route('user.description') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <div>
+{{--                            <label for="content" class="block text-sm font-medium text-gray-700">Description</label>--}}
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    rows="6"
+                                    required
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+                                >{{ old('content',auth()->user()->description) }}</textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update Description</button>
+                    </form>
+                    @if (session('success'))
+                    <div class="alert alert-success mt-3">{{ session('success') }}</div>
+                   @endif
                 </div>
             </div>
             <div class="bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Account Actions</h2>
                 <div class="space-y-4">
+                    @if(session('password_status'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                            {{ session('password_status') }}
+                        </div>
+                    @endif
+
+                    @if($errors->updatePassword->any())
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                            <ul class="list-disc list-inside">
+                                @foreach($errors->updatePassword->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="{{ route('password.update') }}" method="post" class="space-y-4">
                         @csrf
                         @method('put')
                         <div>
-                            <label for="current_password" class="block text-sm font-medium text-gray-700">Current
-                                Password</label>
+                            <label for="current_password" class="block text-sm font-medium text-gray-700">Current Password</label>
                             <input type="password" name="current_password" id="current_password" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
@@ -40,8 +75,7 @@
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
                         <div>
-                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm
-                                New Password</label>
+                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm New Password</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
@@ -49,6 +83,7 @@
                             Update Password
                         </button>
                     </form>
+
                     <div class="mt-6 border-t pt-6">
                         <h3 class="text-lg font-medium text-red-600 mb-4">Delete Account</h3>
                         <form action="{{ route('profile.destroy') }}" method="post"

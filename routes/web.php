@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/forum', [ForumPostController::class, 'store'])->name('forum.store');
     Route::post('/replies', [ForumReplyController::class, 'store'])->name('replies.store');
     Route::get('/forum/{id}', [ForumPostController::class, 'show'])->name('forum.show');
+    Route::post('/dashboard/description', [ProfileController::class, 'description'])->name('user.description');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

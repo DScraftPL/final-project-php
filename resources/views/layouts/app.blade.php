@@ -63,13 +63,13 @@
                     @endphp
                     @foreach($recentAnnouncements as $announcement)
                         <li>
-                            <h3 class="font-medium text-gray-800 hover:text-blue-600">
+                            <h3 class="font-medium text-gray-600">
                                 {{ $announcement->title }}
                             </h3>
                         </li>
                     @endforeach
                     @if($recentAnnouncements->isEmpty())
-                        <li class="text-gray-600">No announcements yet</li>
+                        <li class="text-gray-600" >No announcements yet</li>
                     @endif
                     @if(auth()->check() && auth()->user()->is_admin)
                         <li class="pt-4 border-t mt-4">

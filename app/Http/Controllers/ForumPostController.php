@@ -26,7 +26,10 @@ class ForumPostController extends Controller
 
     public function index(Request $request)
     {
-        $numberOfPosts = $request->get('number_of_posts', 3);
+        $validated = $request->validate([
+            'number_of_posts' => 'nullable|in:3,5,10',
+        ]);
+        $numberOfPosts = $validated['number_of_posts'] ?? 3;
         $posts = ForumPost::paginate($numberOfPosts);
         return view('forum.index', compact('posts', 'numberOfPosts'));
     }
@@ -34,7 +37,10 @@ class ForumPostController extends Controller
     public function show($postId, Request $request)
     {
         $post = ForumPost::with('replies.author')->findOrFail($postId);
-        $numberOfReplies = $request->get('number_of_replies', 3);
+        $validated = $request->validate([
+            'number_of_replies' => 'nullable|in:3,5,10',
+        ]);
+        $numberOfReplies = $validated['number_of_replies'] ?? 3;
         $replies = $post->replies()->latest()->paginate($numberOfReplies);
         return view('forum.show', compact('post', 'replies', 'numberOfReplies'));
     }
@@ -49,26 +55,9 @@ class ForumPostController extends Controller
     public function destroy($postId)
     {
         $post = ForumPost::with('replies')->findOrFail($postId);
+
         $post->replies()->delete();
         $post->delete();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         return redirect()->route('forum.index')->with('success', 'Post and all associated replies deleted successfully.');
     }

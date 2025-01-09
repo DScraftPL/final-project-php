@@ -28,7 +28,14 @@
                     </div>
                 </div>
             </div>
-
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">Description</h2>
+                @if($user->description)
+                    <h3>{{$user->description}}</h3>
+                @else
+                    <h3>No description</h3>
+                @endif
+            </div>
             <div class="bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">User Posts</h2>
                 @if($user->posts->count() > 0)

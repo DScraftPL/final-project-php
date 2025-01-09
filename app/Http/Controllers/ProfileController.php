@@ -28,8 +28,8 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if (isset($validated['description'])) {
+            $request->user()->description = $validated['description'];
         }
 
         $request->user()->save();
@@ -57,4 +57,21 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function description(Request $request)
+    {
+        $validated = $request->validate([
+            'description' => 'nullable|string|max:5000',
+        ]);
+
+        $user = auth()->user();
+        if($user->description == $validated['description']) {
+            return redirect()->back()->with('success', 'Description has not changed...');
+        }
+        $user->description = $validated['description'] ?? null;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Description updated successfully!');
+    }
+
 }

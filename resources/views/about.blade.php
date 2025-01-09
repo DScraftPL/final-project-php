@@ -1,15 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Hello There</h1>
-    <p>I made this website for university project!</p>
-    <p>I honestly have no idea how it works</p>
+    <div class="space-y-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h1 class="text-2xl font-bold mb-4">Hello There!</h1>
+            <div class="space-y-4">
+                <p class="text-gray-600">
+                    I made this website for university project. Tech used is Laravel 11 + Blade, using Laravel Breeze template.
+                </p>
 
-    <p>To do:</p>
-    <p>Admin to: delete post, delete reply, delete/ban user, admin panel of all stats, special font when posting</p>
-    <p>User to: change username, change password, delete account</p>
-    <p>Unify looks</p>
-    <p>Done:</p>
-    <p>Announcements</p>
-
+                <div>
+                    <h2 class="text-xl font-semibold mb-3">Website Features</h2>
+                    <p class="text-gray-600 mb-4">Website is a simple forum that supports:</p>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <span>User Management: Creating new users, Deleting users, Changing user password</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <span>Forum Features: Creating new posts, Deleting posts, Replying to posts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <span>User's profile page</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <span>Admin's dashboard for managing the website</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                <span>Global announcements page</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
