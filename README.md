@@ -21,7 +21,7 @@
 ## Narzędzia i technologie:
 - strona serwera: Laravel
 - baza danych: MySQL
-- strona klienta: Laravel Blade
+- strona klienta: Laravel Blade, Tailwind CSS
 
 ## Wymagania
 PHP 8.4.1
@@ -31,6 +31,16 @@ nodejs v23.4.0
 Nie testowałem na niższych, moim głównym środowiskiem był Linux, 
 
 ## Uruchomienie
+
+1. rozpakować projekt
+2. w terminalu, należy przejść do katalogu projektu
+3. w katalogu należy wpisać polecenie `npm install`, w celu doinstalowania pakietów
+4. w katalogu należy wpisać polecenie `composer install` w celu doinstalowania pakietów
+5. w XAMPP należy uruchomić bazę danych MySQL
+6. w katalogu projektu, aby przygotować bazę danych, należy wpisać polecenie 'php artisan migrate'
+7. w katalogu projektu, aby dodać dane do bazy danych, należy wpisać polecenie 'php db:seed'
+8. w katalogu projektu wpisanie `php artisan serve` spowoduje uruchomienie projektu
+9. w przeglądarce należy wpisać adres `localhost:8000`
 
 ## Uwagi
 Dodałem wiele wpisów generowanych przez Laravela, poprzez moduły Factory i Seeder. 
