@@ -21,6 +21,13 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    public function admin()
+    {
+        return $this->state([
+            'is_admin' => true,
+        ]);
+    }
+
     public function definition(): array
     {
         return [

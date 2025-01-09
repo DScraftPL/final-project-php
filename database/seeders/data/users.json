@@ -1,0 +1,23 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "password": "password123"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "password": "password123"
+    },
+    {
+        "name": "Kacper Wiacek",
+        "email": "kacper@wiacek.pl",
+        "password": "kacperwiacek"
+    },
+    {
+        "name": "unlimitedPower",
+        "email": "admin@example.com",
+        "password": "password",
+        "is_admin": true
+    }
+]

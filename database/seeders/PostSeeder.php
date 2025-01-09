@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\ForumPost;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class PostSeeder extends Seeder
 {
@@ -13,6 +15,12 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        ForumPost::factory()->count(10)->create();
+        $jsonData = File::get(database_path('/seeders/data/posts.json'));
+        $posts = json_decode($jsonData, true);
+
+        foreach ($posts as $post) {
+            ForumPost::create($post);
+        }
+        ForumPost::factory()->count(6)->create();
     }
 }

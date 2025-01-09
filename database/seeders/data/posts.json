@@ -1,0 +1,22 @@
+[
+    {
+        "content": "This is first post",
+        "author_id": 1
+    },
+    {
+        "content": "I love PHP",
+        "author_id": 3
+    },
+    {
+        "content": "Js is love, JS is life",
+        "author_id": 2
+    },
+    {
+        "content": "Does anyone know how for loop in C++ works?",
+        "author_id": 2
+    },
+    {
+        "content": "<h1>Hello</h1>",
+        "author_id": 1
+    }
+]

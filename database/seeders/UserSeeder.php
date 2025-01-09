@@ -10,13 +10,14 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-//        $jsonData = File::get(database_path('/seeders/users.json'));
-//        $users = json_decode($jsonData, true);
-//
-//        foreach ($users as $user) {
-//            User::create($user);
-//        }
+        $jsonData = File::get(database_path('/seeders/data/users.json'));
+        $users = json_decode($jsonData, true);
 
-        User::factory()->count(3)->create();
+        foreach ($users as $user) {
+            User::create($user);
+        }
+
+        User::factory()->count(1)->admin()->create();
+        User::factory()->count(2)->create();
     }
 }

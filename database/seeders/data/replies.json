@@ -1,0 +1,17 @@
+[
+    {
+        "post_id": 5,
+        "author_id": 2,
+        "content": "Why are you doing HTML injection?"
+    },
+    {
+        "post_id": 2,
+        "author_id": 3,
+        "content": "PHP with laravel is best combo <3"
+    },
+    {
+        "post_id": 3,
+        "author_id": 3,
+        "content": "Are you stupid?????"
+    }
+]
