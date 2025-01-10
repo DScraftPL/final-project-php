@@ -37,7 +37,7 @@ Nie testowałem na niższych, moim głównym środowiskiem był Linux,
 3. w katalogu należy wpisać polecenie `npm install`, w celu doinstalowania pakietów
 4. w katalogu należy wpisać polecenie `composer install` w celu doinstalowania pakietów
 5. w XAMPP należy uruchomić bazę danych MySQL
-6. w katalogu projektu, aby przygotować bazę danych, należy wpisać polecenie 'php artisan migrate'
+6. w katalogu projektu, aby przygotować bazę danych, należy wpisać polecenie 'php artisan migrate' (trzeba zaznaczyć yes, ale trzeba MYSQL wymusić (.env))
 7. w katalogu projektu, aby dodać dane do bazy danych, należy wpisać polecenie 'php db:seed'
 8. w katalogu projektu wpisanie `php artisan serve` spowoduje uruchomienie projektu
 9. w przeglądarce należy wpisać adres `localhost:8000`

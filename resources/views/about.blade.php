@@ -34,6 +34,10 @@
                                 <span class="text-blue-500 mr-2">•</span>
                                 <span>Global announcements page</span>
                             </li>
+                            <li class="flex items-start">
+                                <span class="text-red-500 mr-2">•</span>
+                                <span>To Do: Profile Picture, user can edit posts, admin to block people</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
