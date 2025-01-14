@@ -36,7 +36,7 @@
                             </li>
                             <li class="flex items-start">
                                 <span class="text-red-500 mr-2">•</span>
-                                <span>To Do: Profile Picture, user can edit posts, admin to block people</span>
+                                <span>To Do: Profile Picture, user can edit posts, admin to block people, like posts and replies</span>
                             </li>
                         </ul>
                     </div>

@@ -36,4 +36,35 @@ class ForumReplyController extends Controller
 
         return back()->with('success', 'Reply deleted successfully.');
     }
+
+    public function edit($id)
+    {
+        $reply = ForumReply::findOrFail($id);
+
+        if ($reply->author_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('forum.edit-reply', compact('reply'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $reply = ForumReply::findOrFail($id);
+
+        if ($reply->author_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $validated = $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
+        $reply->update([
+            'content' => $validated['content']
+        ]);
+
+        return redirect()->route('forum.show', $reply->post_id)
+            ->with('success', 'Reply updated successfully.');
+    }
 }

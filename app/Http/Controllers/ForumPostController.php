@@ -61,4 +61,36 @@ class ForumPostController extends Controller
 
         return redirect()->route('forum.index')->with('success', 'Post and all associated replies deleted successfully.');
     }
+
+    public function edit($id)
+    {
+        $post = ForumPost::findOrFail($id);
+
+        if ($post->author_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('forum.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = ForumPost::findOrFail($id);
+
+        if ($post->author_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $validated = $request->validate([
+            'content' => 'required|string|max:255',
+        ]);
+
+        $post->update([
+            'content' => $validated['content']
+        ]);
+
+        return redirect()->route('forum.show', $post->id)
+            ->with('success', 'Post updated successfully.');
+    }
+
 }

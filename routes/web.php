@@ -41,6 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/replies', [ForumReplyController::class, 'store'])->name('replies.store');
     Route::get('/forum/{id}', [ForumPostController::class, 'show'])->name('forum.show');
     Route::post('/dashboard/description', [ProfileController::class, 'description'])->name('user.description');
+    Route::get('/forum/{id}/edit', [ForumPostController::class, 'edit'])->name('forum.edit');
+    Route::put('/forum/{id}', [ForumPostController::class, 'update'])->name('forum.update');
+    Route::get('/reply/{id}/edit', [ForumReplyController::class, 'edit'])->name('reply.edit');
+    Route::put('/reply/{id}', [ForumReplyController::class, 'update'])->name('reply.update');
+    Route::post('/dashboard/profile-picture', [ProfileController::class, 'updateProfilePicture'])->name('user.profile-picture');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

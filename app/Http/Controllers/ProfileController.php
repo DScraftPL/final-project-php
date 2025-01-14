@@ -74,4 +74,16 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Description updated successfully!');
     }
 
+    public function updateProfilePicture(Request $request)
+    {
+        $validated = $request->validate([
+            'image_id' => 'required|integer|min:1|max:5',
+        ]);
+
+        $user = auth()->user();
+        $user->image_id = $validated['image_id'];
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile picture updated successfully!');
+    }
 }
