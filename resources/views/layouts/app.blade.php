@@ -81,6 +81,26 @@
                     @endif
                 </ul>
             </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold mb-4">Search Posts</h2>
+                <form action="/forum/search" method="GET">
+                    <div class="space-y-2">
+                        <input 
+                            name="query" 
+                            type="text" 
+                            placeholder="Search posts..." 
+                            class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            value="{{ request('query') }}"
+                            required
+                            minlength="1"
+                        >
+                        <button 
+                            type="submit" 
+                            class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                        >Search</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </main>

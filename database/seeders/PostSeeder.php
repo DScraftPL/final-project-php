@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\File;
 
 class PostSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $jsonData = File::get(database_path('/seeders/data/posts.json'));

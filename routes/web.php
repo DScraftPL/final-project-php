@@ -26,8 +26,6 @@ Route::get('/user/{userName}', function ($userName) {
 
 Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
 
-Route::get('/comments', [CommentController::class, 'index']);
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -37,6 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/forum', [ForumPostController::class, 'index'])->name('forum.index');
     Route::get('/forum/create', [ForumPostController::class, 'create'])->name('forum.create');
+    Route::get('/forum/search', [ForumPostController::class, 'search'])->name('forum.search');
     Route::post('/forum', [ForumPostController::class, 'store'])->name('forum.store');
     Route::post('/replies', [ForumReplyController::class, 'store'])->name('replies.store');
     Route::get('/forum/{id}', [ForumPostController::class, 'show'])->name('forum.show');

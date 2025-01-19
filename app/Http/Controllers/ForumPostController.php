@@ -89,8 +89,20 @@ class ForumPostController extends Controller
             'content' => $validated['content']
         ]);
 
-        return redirect()->route('forum.show', $post->id)
-            ->with('success', 'Post updated successfully.');
+        return redirect()->route('forum.show', $post->id)->with('success', 'Post updated successfully.');
     }
 
+    public function search(Request $request)
+    {
+        $validated = $request->validate([
+            'query' => 'required|string|min:1',
+        ]);
+
+        $posts = ForumPost::where('content', 'LIKE', "%{$validated['query']}%")->latest()->paginate(3);
+
+        return view('forum.search', [
+            'posts' => $posts,
+            'searchQuery' => $validated['query']
+        ]);
+    }
 }
