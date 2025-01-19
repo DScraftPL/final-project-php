@@ -37,10 +37,11 @@ Nie testowałem na niższych, moim głównym środowiskiem był Linux,
 3. w katalogu należy wpisać polecenie `npm install`, w celu doinstalowania pakietów
 4. w katalogu należy wpisać polecenie `composer install` w celu doinstalowania pakietów
 5. w XAMPP należy uruchomić bazę danych MySQL
-6. w katalogu projektu, aby przygotować bazę danych, należy wpisać polecenie 'php artisan migrate' (trzeba zaznaczyć yes, ale trzeba MYSQL wymusić (.env))
-7. w katalogu projektu, aby dodać dane do bazy danych, należy wpisać polecenie 'php db:seed'
-8. w katalogu projektu wpisanie `php artisan serve` spowoduje uruchomienie projektu
-9. w przeglądarce należy wpisać adres `localhost:8000`
+6. jeżeli plik .env nie istnieje w katalogu głównym, należy skopiować plik .env.example i zmienić jego nazwę na .env i wpisać polecenie `php artisan key:generate --force`
+7. w katalogu projektu, aby przygotować bazę danych, należy wpisać polecenie `php artisan migrate` (należy zaznaczyć 'yes') 
+8. w katalogu projektu, aby dodać dane do bazy danych, należy wpisać polecenie `php db:seed` (należy zaznaczyć 'yes')
+9. w katalogu projektu wpisanie `php artisan serve` spowoduje uruchomienie projektu
+10. w przeglądarce należy wpisać adres `localhost:8000`
 
 ## Uwagi
 Dodałem wiele wpisów generowanych przez Laravela, poprzez moduły Factory i Seeder. 
@@ -48,6 +49,8 @@ Wygenerowane treści mogą się różnić między uruchomieniami, ponieważ są 
 Są przygotowane specjalne wpisy do bazy danych, które przy każdej "migracji" zostaną wstawione w celach testowych
 
 Konto administratora posiada dodatkowe funkcjonalności na podstronach projektu, ukryte dla użytkowników nieautoryzowanych
+
+Kod projektu jest dostępny na githubie: https://github.com/DScraftPL/final-project-php
 
 ## Konta Testowe
 
