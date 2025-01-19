@@ -59,7 +59,7 @@ class ForumPostController extends Controller
         $post->replies()->delete();
         $post->delete();
 
-        return redirect()->route('forum.index')->with('success', 'Post and all associated replies deleted successfully.');
+        return redirect()->route('forum.index')->with('success', 'Post and all replies deleted successfully.');
     }
 
     public function edit($id)
