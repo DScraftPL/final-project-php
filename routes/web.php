@@ -32,19 +32,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/forum', [ForumPostController::class, 'index'])->name('forum.index');
+Route::middleware(['auth', 'blocked'])->group(function () {
     Route::get('/forum/create', [ForumPostController::class, 'create'])->name('forum.create');
-    Route::get('/forum/search', [ForumPostController::class, 'search'])->name('forum.search');
     Route::post('/forum', [ForumPostController::class, 'store'])->name('forum.store');
     Route::post('/replies', [ForumReplyController::class, 'store'])->name('replies.store');
-    Route::get('/forum/{id}', [ForumPostController::class, 'show'])->name('forum.show');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/forum', [ForumPostController::class, 'index'])->name('forum.index');
+    Route::get('/forum/search', [ForumPostController::class, 'search'])->name('forum.search');
     Route::post('/dashboard/description', [ProfileController::class, 'description'])->name('user.description');
-    Route::get('/forum/{id}/edit', [ForumPostController::class, 'edit'])->name('forum.edit');
-    Route::put('/forum/{id}', [ForumPostController::class, 'update'])->name('forum.update');
-    Route::get('/reply/{id}/edit', [ForumReplyController::class, 'edit'])->name('reply.edit');
-    Route::put('/reply/{id}', [ForumReplyController::class, 'update'])->name('reply.update');
     Route::post('/dashboard/profile-picture', [ProfileController::class, 'updateProfilePicture'])->name('user.profile-picture');
+    Route::get('/forum/{id}', [ForumPostController::class, 'show'])->name('forum.show');
+    Route::put('/forum/{id}', [ForumPostController::class, 'update'])->name('forum.update');
+    Route::get('/forum/{id}/edit', [ForumPostController::class, 'edit'])->name('forum.edit');
+    Route::put('/reply/{id}', [ForumReplyController::class, 'update'])->name('reply.update');
+    Route::get('/reply/{id}/edit', [ForumReplyController::class, 'edit'])->name('reply.edit');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
