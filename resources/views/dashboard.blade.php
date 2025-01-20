@@ -16,10 +16,18 @@
             <div class="bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Your Statistics</h2>
                 <div class="space-y-2">
-                    <p>Username: {{ Auth::user()->name }}</p>
+                    <p>Username: {{ Auth::user()->name }}
+                        @if (auth()->user()->is_blocked)
+                            <span class="bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
+                                Blocked
+                            </span>
+                        @endif
+                    </p>                    
+
                     <p>Email: {{ Auth::user()->email }}</p>
                     <p>Total Posts: {{ Auth::user()->posts->count() }}</p>
                     <p>Total Replies: {{ Auth::user()->replies->count() }}</p>
+
                     <form action="{{ route('user.description') }}" method="POST">
                         @csrf
                         <div class="form-group">
@@ -37,7 +45,7 @@
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update Description</button>
                     </form>
                     @if (session('success'))
-                        <div class="alert alert-success mt-3">{{ session('success') }}</div>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">{{ session('success') }}</div>
                     @endif
                 </div>
             </div>

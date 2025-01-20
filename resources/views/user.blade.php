@@ -4,7 +4,14 @@
     @if ($user)
         <div class="space-y-6">
             <div class="bg-white p-6 rounded-lg shadow">
-                <h1 class="text-2xl font-bold mb-4">User Profile</h1>
+                <h1 class="text-2xl font-bold mb-4">User Profile
+                @if (auth()->user()->is_blocked)
+                    <span class="bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
+                        Blocked
+                    </span>
+                @endif
+                </h1>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-3">
                         <div>

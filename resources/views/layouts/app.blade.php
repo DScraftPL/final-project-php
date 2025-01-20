@@ -45,12 +45,18 @@
         <div class="md:w-64 space-y-6">
             @guest
             @else
+                @if(auth()->user()->is_blocked)
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h1>User cannot create posts</h1>
+                </div>
+                @else
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <a href="/forum/create"
                        class="block w-full bg-blue-500 text-white text-center px-4 py-2 rounded hover:bg-blue-600">
                         Create New Post
                     </a>
                 </div>
+                @endif
             @endguest
 
             <div class="bg-white p-6 rounded-lg shadow-lg">

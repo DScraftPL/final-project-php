@@ -56,6 +56,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/announcement/{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
     Route::delete('/forum/{postId}', [ForumPostController::class, 'destroy'])->name('forum.destroy');
     Route::delete('/reply/{replyId}', [ForumReplyController::class, 'destroy'])->name('reply.destroy');
+    Route::post('/user/{id}/toggle-block', [ProfileController::class, 'toggleBlock'])->name('user.toggleBlock');
 });
 
 require __DIR__ . '/auth.php';

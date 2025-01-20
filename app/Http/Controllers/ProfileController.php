@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,5 +86,15 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile picture updated successfully!');
+    }
+    public function toggleBlock($id)
+    {
+        $user = User::findOrFail($id);
+        if($user->is_admin){
+            return redirect()->back()->with('status','User is an admin!');
+        }
+        $user->is_blocked = !$user->is_blocked;
+        $user->save();
+        return redirect()->back()->with('status', 'User block status updated successfully!');
     }
 }

@@ -109,6 +109,11 @@
         </div>
 
         @auth
+            @if(auth()->user()->is_blocked)
+            <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">User cannot reply</h2>
+            </div>
+            @else
             <div class="bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Add Reply</h2>
                 <form action="{{ route('replies.store') }}" method="POST" class="space-y-4">
@@ -126,6 +131,7 @@
                     </button>
                 </form>
             </div>
+            @endif
         @else
             <div class="bg-white p-6 rounded-lg shadow text-center">
                 <p class="text-gray-600">Please <a href="{{ route('login') }}" class="text-blue-600 hover:text-blue-800">login</a> to reply.</p>
