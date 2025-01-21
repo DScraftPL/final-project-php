@@ -22,7 +22,7 @@
                 <p class="text-3xl font-bold">{{ \App\Models\ForumReply::count() }}</p>
             </div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow">
+        <div class="bg-white p-6 rounded-lg shadow overflow-x-auto">
             <h2 class="text-xl font-semibold mb-4">User Management</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
@@ -62,13 +62,13 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $user->replies->count() }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $user->created_at->format('M d, Y') }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="/user/{{ $user->name }}" class="text-blue-600 hover:text-blue-900">View
+                                <a href="/user/{{ $user->name }}" class="text-blue-600 hover:text-blue-900">
                                     Profile</a>
                                     @if($user->is_admin)
-                                    @else 
+                                    @else
                                         <form action="{{ route('user.toggleBlock', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
                                             @csrf
-                                            <button type="submit" class="ml-2 px-2 py-1 text-sm rounded 
+                                            <button type="submit" class="ml-2 px-2 py-1 text-sm rounded
                                             {{ $user->is_blocked ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-green-500 text-white hover:bg-green-600' }}">
                                                     {{ $user->is_blocked ? 'Unblock' : 'Block' }}
                                             </button>
