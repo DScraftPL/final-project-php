@@ -5,11 +5,11 @@
         <div class="space-y-6">
             <div class="bg-white p-6 rounded-lg shadow">
                 <h1 class="text-2xl font-bold mb-4">User Profile
-                @if ($user->is_blocked)
-                    <span class="bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
+                    @if ($user->is_blocked)
+                        <span class="bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
                         Blocked
                     </span>
-                @endif
+                    @endif
                 </h1>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -52,7 +52,8 @@
                                 <div class="flex justify-between items-start">
                                     <div class="space-y-2">
                                         <div class="flex items-center space-x-2">
-                                            <a href="/user/{{$post->author->name}}" class="text-blue-600 hover:text-blue-800 font-medium">
+                                            <a href="/user/{{$post->author->name}}"
+                                               class="text-blue-600 hover:text-blue-800 font-medium">
                                                 {{ $post->author->name }}
                                             </a>
                                             <span class="text-gray-500 text-sm">

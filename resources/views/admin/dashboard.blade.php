@@ -64,16 +64,17 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <a href="/user/{{ $user->name }}" class="text-blue-600 hover:text-blue-900">
                                     Profile</a>
-                                    @if($user->is_admin)
-                                    @else
-                                        <form action="{{ route('user.toggleBlock', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
-                                            @csrf
-                                            <button type="submit" class="ml-2 px-2 py-1 text-sm rounded
+                                @if($user->is_admin)
+                                @else
+                                    <form action="{{ route('user.toggleBlock', ['id' => $user->id]) }}" method="POST"
+                                          style="display: inline-block;">
+                                        @csrf
+                                        <button type="submit" class="ml-2 px-2 py-1 text-sm rounded
                                             {{ $user->is_blocked ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-green-500 text-white hover:bg-green-600' }}">
-                                                    {{ $user->is_blocked ? 'Unblock' : 'Block' }}
-                                            </button>
-                                        </form>
-                                    @endif
+                                            {{ $user->is_blocked ? 'Unblock' : 'Block' }}
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

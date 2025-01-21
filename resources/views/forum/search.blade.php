@@ -38,7 +38,8 @@
                                         </a>
                                     @endif
                                     @if(auth()->user()->is_admin)
-                                        <form action="{{ route('forum.destroy', ['postId' => $post->id]) }}" method="post">
+                                        <form action="{{ route('forum.destroy', ['postId' => $post->id]) }}"
+                                              method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"

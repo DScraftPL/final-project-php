@@ -22,7 +22,7 @@
                                 Blocked
                             </span>
                         @endif
-                    </p>                    
+                    </p>
 
                     <p>Email: {{ Auth::user()->email }}</p>
                     <p>Total Posts: {{ Auth::user()->posts->count() }}</p>
@@ -42,10 +42,13 @@
                                 >{{ old('content',auth()->user()->description) }}</textarea>
                             </div>
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update Description</button>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update
+                            Description
+                        </button>
                     </form>
                     @if (session('success'))
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">{{ session('success') }}</div>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                             role="alert">{{ session('success') }}</div>
                     @endif
                 </div>
             </div>
@@ -72,7 +75,8 @@
                         @csrf
                         @method('put')
                         <div>
-                            <label for="current_password" class="block text-sm font-medium text-gray-700">Current Password</label>
+                            <label for="current_password" class="block text-sm font-medium text-gray-700">Current
+                                Password</label>
                             <input type="password" name="current_password" id="current_password" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
@@ -82,7 +86,8 @@
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
                         <div>
-                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm New Password</label>
+                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm
+                                New Password</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                         </div>
@@ -159,7 +164,8 @@
                                     <p class="text-gray-600 text-sm">
                                         Posted on: {{ $post->created_at->format('M d, Y') }}
                                         @if($post->created_at != $post->updated_at)
-                                            <span class="italic">(edited {{ $post->updated_at->format('M d, Y H:i') }})</span>
+                                            <span
+                                                class="italic">(edited {{ $post->updated_at->format('M d, Y H:i') }})</span>
                                         @endif
                                     </p>
                                 </div>

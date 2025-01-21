@@ -46,16 +46,16 @@
             @guest
             @else
                 @if(auth()->user()->is_blocked)
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h1>User cannot create posts</h1>
-                </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h1>User cannot create posts</h1>
+                    </div>
                 @else
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <a href="/forum/create"
-                       class="block w-full bg-blue-500 text-white text-center px-4 py-2 rounded hover:bg-blue-600">
-                        Create New Post
-                    </a>
-                </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <a href="/forum/create"
+                           class="block w-full bg-blue-500 text-white text-center px-4 py-2 rounded hover:bg-blue-600">
+                            Create New Post
+                        </a>
+                    </div>
                 @endif
             @endguest
 
@@ -75,7 +75,7 @@
                         </li>
                     @endforeach
                     @if($recentAnnouncements->isEmpty())
-                        <li class="text-gray-600" >No announcements yet</li>
+                        <li class="text-gray-600">No announcements yet</li>
                     @endif
                     @if(auth()->check() && auth()->user()->is_admin)
                         <li class="pt-4 border-t mt-4">
@@ -91,19 +91,20 @@
                 <h2 class="text-xl font-semibold mb-4">Search Posts</h2>
                 <form action="/forum/search" method="GET">
                     <div class="space-y-2">
-                        <input 
-                            name="query" 
-                            type="text" 
-                            placeholder="Search posts..." 
+                        <input
+                            name="query"
+                            type="text"
+                            placeholder="Search posts..."
                             class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             value="{{ request('query') }}"
                             required
                             minlength="1"
                         >
-                        <button 
-                            type="submit" 
+                        <button
+                            type="submit"
                             class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                        >Search</button>
+                        >Search
+                        </button>
                     </div>
                 </form>
             </div>

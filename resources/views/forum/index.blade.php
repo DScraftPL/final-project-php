@@ -34,15 +34,15 @@
                 <div class="bg-white p-6 rounded-lg shadow">
                     <div class="space-y-3">
                         <div class="flex justify-between items-start">
-                                <div class="flex items-center space-x-3">
-                                    <img src="{{ App\Constants\ProfilePictures::getImagePath($post->author->image_id) }}"
-                                         alt="Profile Picture"
-                                         class="w-8 h-8 rounded-full">
-                                    <a href="/user/{{$post->author->name}}"
-                                       class="text-blue-600 hover:text-blue-800 font-medium">
-                                        {{ $post->author->name }}
-                                    </a>
-                                </div>
+                            <div class="flex items-center space-x-3">
+                                <img src="{{ App\Constants\ProfilePictures::getImagePath($post->author->image_id) }}"
+                                     alt="Profile Picture"
+                                     class="w-8 h-8 rounded-full">
+                                <a href="/user/{{$post->author->name}}"
+                                   class="text-blue-600 hover:text-blue-800 font-medium">
+                                    {{ $post->author->name }}
+                                </a>
+                            </div>
                             <div class="flex space-x-2">
                                 @auth
                                     @if(auth()->id() === $post->author_id)
@@ -52,7 +52,8 @@
                                         </a>
                                     @endif
                                     @if(auth()->user()->is_admin)
-                                        <form action="{{ route('forum.destroy', ['postId' => $post->id]) }}" method="post">
+                                        <form action="{{ route('forum.destroy', ['postId' => $post->id]) }}"
+                                              method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"

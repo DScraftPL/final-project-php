@@ -12,7 +12,8 @@
                                 <img src="{{ App\Constants\ProfilePictures::getImagePath($post->author->image_id) }}"
                                      alt="Profile Picture"
                                      class="w-8 h-8 rounded-full">
-                                <a href="/user/{{ $post->author->name }}" class="text-blue-600 hover:text-blue-800 font-medium">
+                                <a href="/user/{{ $post->author->name }}"
+                                   class="text-blue-600 hover:text-blue-800 font-medium">
                                     Posted by: {{ $post->author->name }}
                                 </a>
                             </div>
@@ -61,10 +62,12 @@
                                     <p class="text-gray-800">{{ $reply->content }}</p>
                                     <div class="flex items-center space-x-2 text-sm">
                                         <div class="flex items-center space-x-2 text-sm">
-                                            <img src="{{ App\Constants\ProfilePictures::getImagePath($reply->author->image_id) }}"
-                                                 alt="Profile Picture"
-                                                 class="w-6 h-6 rounded-full">
-                                            <a href="/user/{{ $reply->author->name }}" class="text-blue-600 hover:text-blue-800">
+                                            <img
+                                                src="{{ App\Constants\ProfilePictures::getImagePath($reply->author->image_id) }}"
+                                                alt="Profile Picture"
+                                                class="w-6 h-6 rounded-full">
+                                            <a href="/user/{{ $reply->author->name }}"
+                                               class="text-blue-600 hover:text-blue-800">
                                                 {{ $reply->author->name }}
                                             </a>
                                         </div>
@@ -85,7 +88,8 @@
                                             </a>
                                         @endif
                                         @if(auth()->user()->is_admin)
-                                            <form action="{{ route('reply.destroy', ['replyId' => $reply->id]) }}" method="post">
+                                            <form action="{{ route('reply.destroy', ['replyId' => $reply->id]) }}"
+                                                  method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit"
@@ -110,31 +114,32 @@
 
         @auth
             @if(auth()->user()->is_blocked)
-            <div class="bg-white p-6 rounded-lg shadow">
-            <h2 class="text-xl font-semibold mb-4">User cannot reply</h2>
-            </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold mb-4">User cannot reply</h2>
+                </div>
             @else
-            <div class="bg-white p-6 rounded-lg shadow">
-                <h2 class="text-xl font-semibold mb-4">Add Reply</h2>
-                <form action="{{ route('replies.store') }}" method="POST" class="space-y-4">
-                    @csrf
-                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                    <div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold mb-4">Add Reply</h2>
+                    <form action="{{ route('replies.store') }}" method="POST" class="space-y-4">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <div>
                         <textarea name="content"
                                   placeholder="Write your reply..."
                                   rows="4"
                                   class="w-full rounded-md border-gray-300 shadow-sm"
                                   required></textarea>
-                    </div>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                        Submit Reply
-                    </button>
-                </form>
-            </div>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                            Submit Reply
+                        </button>
+                    </form>
+                </div>
             @endif
         @else
             <div class="bg-white p-6 rounded-lg shadow text-center">
-                <p class="text-gray-600">Please <a href="{{ route('login') }}" class="text-blue-600 hover:text-blue-800">login</a> to reply.</p>
+                <p class="text-gray-600">Please <a href="{{ route('login') }}"
+                                                   class="text-blue-600 hover:text-blue-800">login</a> to reply.</p>
             </div>
         @endauth
     </div>

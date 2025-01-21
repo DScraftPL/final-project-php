@@ -66,7 +66,7 @@ class ProfileController extends Controller
         ]);
 
         $user = auth()->user();
-        if($user->description == $validated['description']) {
+        if ($user->description == $validated['description']) {
             return redirect()->back()->with('success', 'Description has not changed...');
         }
         $user->description = $validated['description'] ?? null;
@@ -87,11 +87,12 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('success', 'Profile picture updated successfully!');
     }
+
     public function toggleBlock($id)
     {
         $user = User::findOrFail($id);
-        if($user->is_admin){
-            return redirect()->back()->with('status','User is an admin!');
+        if ($user->is_admin) {
+            return redirect()->back()->with('status', 'User is an admin!');
         }
         $user->is_blocked = !$user->is_blocked;
         $user->save();

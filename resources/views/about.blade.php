@@ -6,7 +6,8 @@
             <h1 class="text-2xl font-bold mb-4">Hello There!</h1>
             <div class="space-y-4">
                 <p class="text-gray-600">
-                    I made this website for university project. Tech used is Laravel 11 + Blade, using Laravel Breeze template.
+                    I made this website for university project. Tech used is Laravel 11 + Blade, using Laravel Breeze
+                    template.
                 </p>
 
                 <div>
