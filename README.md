@@ -6,17 +6,19 @@
 
 ## Funkcjonalności:
 - uwierzytelnienie
-- dodawanie wpisów
-- dodawanie ogłoszeń (administrator)
-- dodawanie odpowiedzi na wpis
+- dodawanie i edytowanie wpisów
+- dodawanie, edytowanie i usuwanie ogłoszeń (administrator)
+- dodawanie i edytowanie odpowiedzi na wpis
 - panel użytkownika:
   - zmiana hasła
   - usunięcie konta
   - dodanie i edycja opisu konta
+  - zmianę zdjęcia profilowego (z 5 możliwych)
 - panel administratora:
   - podgląd statystyk
   - podgląd użytkowników
   - usuwanie wpisów
+  - blokowanie użytkowników
 
 ## Narzędzia i technologie:
 - strona serwera: Laravel
