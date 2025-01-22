@@ -4,14 +4,20 @@
     @if ($user)
         <div class="space-y-6">
             <div class="bg-white p-6 rounded-lg shadow">
-                <h1 class="text-2xl font-bold mb-4">User Profile
-                    @if ($user->is_blocked)
-                        <span class="bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
+                <div class="flex items-center gap-4">
+                    <h1 class="text-2xl font-bold mb-4">User Profile
+                        @if ($user->is_blocked)
+                            <span class="bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded-full">
                         Blocked
                     </span>
-                    @endif
-                </h1>
-
+                        @endif
+                    </h1>
+                    <div>
+                        <img src="{{ App\Constants\ProfilePictures::getImagePath($user->image_id) }}"
+                             alt="Profile Picture"
+                             class="w-16 h-16 rounded-full">
+                    </div>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-3">
                         <div>
