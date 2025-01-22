@@ -9,6 +9,7 @@ class ForumPostController extends Controller
 {
     public function create()
     {
+        
         return view('forum.create');
     }
 
@@ -16,10 +17,25 @@ class ForumPostController extends Controller
     {
         $validated = $request->validate([
             'content' => 'required|string|max:255',
+            'attachment' => 'nullable|file'
         ]);
+        $filepath = null;
+        $filename = null;
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $filename = $file->getClientOriginalName();
+            $filepath = $file->store('attachments', 'public');
+        }
+        /*
+        \Log::info('File Path:', ['file_path' => $filepath]);
+        \Log::info('File Name:', ['file_name' => $filename]);
+        \Log::info('Validated Content:', ['content' => $validated['content']]);
+        */
         ForumPost::create([
             'author_id' => auth()->id(),
             'content' => $validated['content'],
+            'file_path' => $filepath,
+            'file_name'=> $filename,
         ]);
         return redirect()->route('forum.index');
     }

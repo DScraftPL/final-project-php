@@ -9,7 +9,7 @@ class ForumPost extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['author_id', 'content'];
+    protected $fillable = ['author_id', 'content', 'file_path', 'file_name'];
 
     public function author()
     {

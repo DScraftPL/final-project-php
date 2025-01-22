@@ -54,6 +54,9 @@ Konto administratora posiada dodatkowe funkcjonalności na podstronach projektu,
 
 Kod projektu jest dostępny na githubie: https://github.com/DScraftPL/final-project-php
 
+W przypadkach problemów z plikami: 
+- serwer musi działać na porcie 8000 (uruchomiony poleceniem php artisan serve)
+- należy wpisać polecenie `php artisan storage:link`
 ## Konta Testowe
 
 - John Doe:
