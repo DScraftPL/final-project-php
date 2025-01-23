@@ -57,7 +57,7 @@ Kod projektu jest dostępny na githubie: https://github.com/DScraftPL/final-proj
 
 W przypadkach problemów z plikami: 
 - serwer musi działać na porcie 8000 (uruchomiony poleceniem php artisan serve)
-- należy wpisać polecenie `php artisan storage:link`
+- upewnić się, że w katalogu `public/` nie ma symlinka `storage`, należy wpisać polecenie `php artisan storage:link`
 - należy upewnić się, że plik nie zajmuje zbyt dużo miejsca na dysku
 
 ## Konta Testowe
