@@ -37,7 +37,7 @@
                 @if($post->file_path)
                     <div class="mt-4 p-4 bg-gray-50 rounded-md">
                         <!-- this will only work on :8000 lol-->
-                        <a href="http://localhost:8000/storage/{{$post->file_path}}" 
+                        <a href="{{ Storage::url($post->file_path) }}"
                             class="text-blue-600 hover:text-blue-800 text-sm font-medium"
                             target="_blank"> {{ $post->file_name }}
                         </a>

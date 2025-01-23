@@ -7,8 +7,10 @@
 ## Funkcjonalności:
 - uwierzytelnienie
 - dodawanie i edytowanie wpisów
+- dodawanie załącznika do wpisu (opcjonalne)
 - dodawanie, edytowanie i usuwanie ogłoszeń (administrator)
 - dodawanie i edytowanie odpowiedzi na wpis
+- wyszukiwanie wszystkich wpisów z danym słowem
 - panel użytkownika:
   - zmiana hasła
   - usunięcie konta
@@ -33,7 +35,6 @@ nodejs v23.4.0
 Nie testowałem na niższych, moim głównym środowiskiem był Linux, 
 
 ## Uruchomienie
-
 1. rozpakować projekt
 2. w terminalu, należy przejść do katalogu projektu
 3. w katalogu należy wpisać polecenie `npm install`, w celu doinstalowania pakietów
@@ -47,7 +48,7 @@ Nie testowałem na niższych, moim głównym środowiskiem był Linux,
 
 ## Uwagi
 Dodałem wiele wpisów generowanych przez Laravela, poprzez moduły Factory i Seeder. 
-Wygenerowane treści mogą się różnić między uruchomieniami, ponieważ są to treści losowe.
+Wygenerowane treści mogą się różnić dodawaniem wpisów do bazy danych, ponieważ są to treści losowe.
 Są przygotowane specjalne wpisy do bazy danych, które przy każdej "migracji" zostaną wstawione w celach testowych
 
 Konto administratora posiada dodatkowe funkcjonalności na podstronach projektu, ukryte dla użytkowników nieautoryzowanych
@@ -57,8 +58,9 @@ Kod projektu jest dostępny na githubie: https://github.com/DScraftPL/final-proj
 W przypadkach problemów z plikami: 
 - serwer musi działać na porcie 8000 (uruchomiony poleceniem php artisan serve)
 - należy wpisać polecenie `php artisan storage:link`
-## Konta Testowe
+- należy upewnić się, że plik nie zajmuje zbyt dużo miejsca na dysku
 
+## Konta Testowe
 - John Doe:
   - email: john@example.com
   - password: password123
